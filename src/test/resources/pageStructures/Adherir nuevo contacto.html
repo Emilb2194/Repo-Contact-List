@@ -1,0 +1,98 @@
+<html>
+ <head>
+  <title>My Contacts</title>
+  <link rel="icon" href="/img/thinkingTesterIcon.png">
+  <link rel="stylesheet" href="/css/styles.css">
+ </head>
+ <body>
+  <div class="main-content">
+   <header>
+    <h1>Contact List</h1><button id="logout" class="logout" onclick="location.href='/logout'">Logout</button>
+   </header>
+   <p>Click on any contact to view the Contact Details</p>
+   <p><button id="add-contact" onclick="location.href='/addContact'">Add a New Contact</button></p>
+   <div class="contacts">
+    <table class="contactTable" id="myTable">
+     <thead class="contactTableHead">
+      <tr>
+       <th>Name</th>
+       <th>Birthdate</th>
+       <th>Email</th>
+       <th>Phone</th>
+       <th>Address</th>
+       <th>City, State/Province, Postal Code</th>
+       <th>Country</th>
+      </tr>
+     </thead>
+     <tbody class="contactTable-Body"></tbody>
+     <tbody>
+      <tr class="contactTableBodyRow">
+       <td hidden="true">68b0e807dcad6b0015341571</td>
+       <td>MARTIN CarterMedhurst</td>
+       <td>1994-04-22</td>
+       <td>mm.2195@gmail.com</td>
+       <td>948-817-9593</td>
+       <td>Addres1</td>
+       <td>MIAMI FLORIDA 03422</td>
+       <td>UNITED ESTATES</td>
+      </tr>
+      <tr class="contactTableBodyRow">
+       <td hidden="true">68c21b8d92186d0015e2ee0f</td>
+       <td>MARTIN MARINO</td>
+       <td>1994-04-22</td>
+       <td>mm.2195@gmail.com</td>
+       <td>1123456789</td>
+       <td>Addres1</td>
+       <td>MIAMI FLORIDA 1705</td>
+       <td>UNITED ESTATES</td>
+      </tr>
+      <tr class="contactTableBodyRow">
+       <td hidden="true">68b0e809770b50001541a8b8</td>
+       <td>FERNANDO RODRIGUEZ</td>
+       <td>1995-03-21</td>
+       <td>fr.2196@gmail.com</td>
+       <td>1133466890</td>
+       <td>Addres2</td>
+       <td>MIAMI FLORIDA 1706</td>
+       <td>UNITED ESTATES</td>
+      </tr>
+      <tr class="contactTableBodyRow">
+       <td hidden="true">68c21b8e92186d0015e2ee10</td>
+       <td>FERNANDO RODRIGUEZ</td>
+       <td>1995-03-21</td>
+       <td>fr.2196@gmail.com</td>
+       <td>1133466890</td>
+       <td>Addres2</td>
+       <td>MIAMI FLORIDA 1706</td>
+       <td>UNITED ESTATES</td>
+      </tr>
+      <tr class="contactTableBodyRow">
+       <td hidden="true">68b0e80bdcad6b0015341572</td>
+       <td>MARCELO TULIO</td>
+       <td>1996-02-17</td>
+       <td>tm.2195@gmail.com</td>
+       <td>1143476991</td>
+       <td>Addres3</td>
+       <td>MIAMI FLORIDA 1707</td>
+       <td>UNITED ESTATES</td>
+      </tr>
+      <tr class="contactTableBodyRow">
+       <td hidden="true">68c21b9092186d0015e2ee11</td>
+       <td>MARCELO TULIO</td>
+       <td>1996-02-17</td>
+       <td>tm.2195@gmail.com</td>
+       <td>1143476991</td>
+       <td>Addres3</td>
+       <td>MIAMI FLORIDA 1707</td>
+       <td>UNITED ESTATES</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </div>
+  <footer>
+   <p>Created by Kristin Jackvony, Copyright 2021</p><img src="/img/thinkingTesterLogo.png">
+  </footer>
+  <script src="/js/contactList.js"></script>
+ </body>
+</html>

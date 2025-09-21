@@ -1,0 +1,10 @@
+{
+  "addUser": {
+    "usuario1": {
+      "firstName": "Mario",
+      "lastName": "Martines",
+      "email": "mar.m2194@gmail.com",
+      "password": "Mar1q2w3e4r-01"
+    }
+  }
+}
