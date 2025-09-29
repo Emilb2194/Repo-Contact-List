@@ -14,6 +14,8 @@ public class ContactListLoginPage extends BasePage {
     private final By submitLoginLocator = By.id("submit");
     private final By signupLoginLocator = By.id("signup");
 
+    //mensaje de error locator
+    private final By errorMessageLocator = By.xpath("//span[text()='Incorrect username or password']");
 
     @Override
     public void waitPageToLoad() {
@@ -38,5 +40,21 @@ public class ContactListLoginPage extends BasePage {
         find(emailLoginLocator).sendKeys(email);
         find(passwordLoginLocator).sendKeys(password);
         find(submitLoginLocator).click();
+    }
+
+    public void verifyMessageError() {
+        Logs.info("Esperando mensaje de error en login");
+        waitPage(errorMessageLocator, "Mensaje de error de login");
+
+        var errorText = find(errorMessageLocator).getText();
+        Logs.info("📛 Texto recibido: %s", errorText);
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(errorText.contains("Incorrect username"), "Texto inesperado: " + errorText),
+                () -> Assertions.assertTrue(find(errorMessageLocator).isDisplayed(), "El mensaje no se muestra"),
+                () -> Assertions.assertEquals("Incorrect username or password", errorText)
+        );
+
+
     }
 }

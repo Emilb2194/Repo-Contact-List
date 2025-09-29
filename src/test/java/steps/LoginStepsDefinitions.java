@@ -1,5 +1,6 @@
 package steps;
 
+import com.github.javafaker.Faker;
 import data.DataGiver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -28,11 +29,25 @@ public class LoginStepsDefinitions {
 
     }
 
+    @When("completar formulario de login con mail invalido y hacer click en el boton Login")
+    public void invalidMail() {
+        Faker dato = new Faker();
+        var mail = dato.internet().emailAddress();
+        final var credenciales = DataGiver.getValidCredencitial();
+        contactListLoginPage.completeFormLogin(mail, credenciales.password());
+    }
+
     @Then("navega a la home page validando cada elemento dentro de la misma")
     public void navegaToHomePage() {
         contactListHomePage.waitPageToLoad();
         var tituloHome = contactListHomePage.tituloDelHome();
         contactListHomePage.verifyHomePage(tituloHome);
     }
+
+    @Then("devuelve un mensaje de error")
+    public void devuelveUnMensajeDeError() {
+        contactListLoginPage.verifyMessageError();
+    }
+
 
 }
