@@ -8,31 +8,28 @@ import pages.ContactListHomePage;
 import pages.ContactListLoginPage;
 import utilities.CommonFlows;
 
-public class LoginStepsDefinitions {
+public class LogOutStepsDefinitions {
+
     CommonFlows commonFlows = new CommonFlows();
     ContactListLoginPage contactListLoginPage = new ContactListLoginPage();
     ContactListHomePage contactListHomePage = new ContactListHomePage();
 
-    @Given("El usuario navegara a la pagina de login")
-    public void navegarPaginaDeLogin() {
+    @Given("El usuario se logueara dentro de la pagina")
+    public void elUsuarioSeLoguearaDentroDeLaPagina() {
         commonFlows.goToLoginPage();
-
-    }
-
-
-    @When("completar formulario de login y hacer click en el boton Login")
-    public void escribirCredenciales() {
         final var credenciales = DataGiver.getValidCredencitial();
         contactListLoginPage.completeFormLogin(credenciales.email(), credenciales.password());
-
-
     }
 
-    @Then("navega a la home page validando cada elemento dentro de la misma")
-    public void navegaToHomePage() {
+    @When("navega a la home y luego procede a precionar el boton Logout")
+    public void navegaALaHomeYLuegoProcedeAPrecionarElBotonLogout() {
         contactListHomePage.waitPageToLoad();
-        var tituloHome = contactListHomePage.tituloDelHome();
-        contactListHomePage.verifyHomePage(tituloHome);
+        contactListHomePage.clickLogOut();
     }
 
+    @Then("navega a la pagina de login nuevamente")
+    public void navegaALaPaginaDeLoginNuevamente() {
+        contactListLoginPage.waitPageToLoad();
+        contactListLoginPage.verifyPage();
+    }
 }

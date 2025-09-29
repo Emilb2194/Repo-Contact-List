@@ -5,11 +5,11 @@ import data.excel.ExcelReader;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import modelos.Contactos;
 import pages.AddContactPage;
 import pages.ContactListHomePage;
 import pages.ContactListLoginPage;
 import utilities.CommonFlows;
+import utilities.Logs;
 
 public class AddContactStepsDefinitions {
     private final CommonFlows commonFlows = new CommonFlows();
@@ -31,33 +31,12 @@ public class AddContactStepsDefinitions {
     @When("completa los datos para agregar un nuevo contacto y preciona el boton submit")
     public void completeFormAddUser() {
         final var listaContactos = ExcelReader.leerListaContactos();
+
         System.out.printf("%s", listaContactos.size());
+        Logs.info("Cantidad de contactos a agregar: " + listaContactos.size());
 
         for (int i = 0; i < listaContactos.size(); i++) {
-            Contactos contacto = listaContactos.get(i);
-
-            addContactPage.completeFormContact(
-                    contacto.getName(),
-                    contacto.getLastName(),
-                    contacto.getBirthdate(),
-                    contacto.getEmail(),
-                    contacto.getPhone(),
-                    contacto.getAddress(),
-                    contacto.getCity(),
-                    contacto.getState(),
-                    contacto.getZipCode(),
-                    contacto.getContry()
-            );
-
-            addContactPage.clickSubmit();
-
-            if (i < (listaContactos.size() - 1)) {
-                // Solo después del primer envío, volvemos a cargar el formulario
-                contactListHomePage.waitUntilAddContactButtonIsVisible();
-                contactListHomePage.clickAddContact();
-                addContactPage.waitPageToLoad();
-                addContactPage.waitUntilFormIsEmpty();
-            }
+            addContactPage.agregarContacto(listaContactos.get(i), i < listaContactos.size() - 1);
         }
 
     }
@@ -67,3 +46,4 @@ public class AddContactStepsDefinitions {
         contactListHomePage.verifyAddContacts();
     }
 }
+

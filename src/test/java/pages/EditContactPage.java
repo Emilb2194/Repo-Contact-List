@@ -29,8 +29,6 @@ public class EditContactPage extends BasePage {
     }
 
     public void modificarElementos() {
-
-
         waitPageToLoad();
 
         //Generando datos aliatoriios con faker
@@ -39,6 +37,7 @@ public class EditContactPage extends BasePage {
         String phone = datos.phoneNumber().cellPhone();
         String postalCode = datos.address().zipCode();
 
+        find(lastNameLocator).click();
         find(lastNameLocator).clear();
         find(lastNameLocator).sendKeys(lastName);
         find(phoneLocator).clear();

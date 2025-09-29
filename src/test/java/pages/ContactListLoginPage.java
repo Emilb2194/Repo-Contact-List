@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import utilities.BasePage;
 import utilities.Logs;
@@ -23,6 +24,13 @@ public class ContactListLoginPage extends BasePage {
 
     @Override
     public void verifyPage() {
+        var titulo = getDriver().getTitle();
+        Assertions.assertAll(
+                () -> Assertions.assertEquals("Contact List App", titulo, "El titulo no es el esperado"),
+                () -> Assertions.assertTrue(find(signupLoginLocator).isDisplayed()),
+                () -> Assertions.assertTrue(find(emailLoginLocator).isDisplayed()),
+                () -> Assertions.assertTrue(find(passwordLoginLocator).isDisplayed())
+        );
 
     }
 

@@ -19,6 +19,9 @@ public class ModifyContactStepsDefinitions {
     private final ContactDetailsPage contactDetailsPage = new ContactDetailsPage();
     private final EditContactPage editContactPage = new EditContactPage();
 
+    //datos originales
+    private List<String> datosOriginales;
+
 
     @Given("Luego de realizar doble click sobre un contacto agregado nos redirecciona a detalle del mismo")
     public void contactDetail() {
@@ -35,15 +38,17 @@ public class ModifyContactStepsDefinitions {
 
     @When("cuando presionamos el boton editar navegamos a la pantalla de edicion modificamos y enviamos")
     public void modifyContact() {
+        datosOriginales = contactDetailsPage.devolveraElementos();
+        System.out.printf("los datos originales son: " + datosOriginales);
+        contactDetailsPage.editContact();
+        editContactPage.modificarElementos();
 
 
     }
 
     @Then("validar que los datos han sido modificados")
     public void validarQueLosDatosHanSidoModificados() {
-        List<String> datosLista = contactDetailsPage.guardaElementos();
-        contactDetailsPage.editContact();
-        editContactPage.modificarElementos();
-        contactDetailsPage.validModifyContact(datosLista);
+        System.out.printf("los datos originales son: " + datosOriginales);
+        contactDetailsPage.validModifyContact(datosOriginales);
     }
 }

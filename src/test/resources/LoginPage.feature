@@ -5,6 +5,10 @@ Feature: Login
 
 
   @regressiones
-  Scenario: login
+  Scenario: Login
     When completar formulario de login y hacer click en el boton Login
-    Then navega a la home page y el usuario valida los botones Logout y Delete account
+    Then navega a la home page validando cada elemento dentro de la misma
+
+
+
+
