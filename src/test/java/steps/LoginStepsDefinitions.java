@@ -37,6 +37,14 @@ public class LoginStepsDefinitions {
         contactListLoginPage.completeFormLogin(mail, credenciales.password());
     }
 
+    @When("completar formulario de login con mail valido completar mal la password y hacer click en el boton Login")
+    public void invalidPassword() {
+        Faker dato = new Faker();
+        var password = dato.internet().password();
+        final var credenciales = DataGiver.getValidCredencitial();
+        contactListLoginPage.completeFormLogin(credenciales.email(), password);
+    }
+
     @Then("navega a la home page validando cada elemento dentro de la misma")
     public void navegaToHomePage() {
         contactListHomePage.waitPageToLoad();
