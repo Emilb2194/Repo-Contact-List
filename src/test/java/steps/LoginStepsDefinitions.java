@@ -23,33 +23,25 @@ public class LoginStepsDefinitions {
 
     @When("completar formulario de login y hacer click en el boton Login")
     public void escribirCredenciales() {
-        final var credenciales = DataGiver.getValidCredencitial();
-        contactListLoginPage.completeFormLogin(credenciales.email(), credenciales.password());
-
-
+        contactListLoginPage.completeFormLogin(DataGiver.getValidCredencitial().email(), DataGiver.getValidCredencitial().password());
     }
 
     @When("completar formulario de login con mail invalido y hacer click en el boton Login")
     public void invalidMail() {
         Faker dato = new Faker();
-        var mail = dato.internet().emailAddress();
-        final var credenciales = DataGiver.getValidCredencitial();
-        contactListLoginPage.completeFormLogin(mail, credenciales.password());
+        contactListLoginPage.completeFormLogin(dato.internet().emailAddress(), DataGiver.getValidCredencitial().password());
     }
 
     @When("completar formulario de login con mail valido completar mal la password y hacer click en el boton Login")
     public void invalidPassword() {
         Faker dato = new Faker();
-        var password = dato.internet().password();
-        final var credenciales = DataGiver.getValidCredencitial();
-        contactListLoginPage.completeFormLogin(credenciales.email(), password);
+        contactListLoginPage.completeFormLogin(DataGiver.getValidCredencitial().email(), dato.internet().password());
     }
 
     @Then("navega a la home page validando cada elemento dentro de la misma")
     public void navegaToHomePage() {
         contactListHomePage.waitPageToLoad();
-        var tituloHome = contactListHomePage.tituloDelHome();
-        contactListHomePage.verifyHomePage(tituloHome);
+        contactListHomePage.verifyHomePage(contactListHomePage.tituloDelHome());
     }
 
     @Then("devuelve un mensaje de error")
