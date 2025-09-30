@@ -11,8 +11,13 @@ Feature: Login
 
 
   @regressiones
-  Scenario: Login Error
+  Scenario: Login Error mail
     When completar formulario de login con mail invalido y hacer click en el boton Login
+    Then devuelve un mensaje de error
+
+  @regressiones
+  Scenario: Login Error password
+    When completar formulario de login con mail valido completar mal la password y hacer click en el boton Login
     Then devuelve un mensaje de error
 
 
